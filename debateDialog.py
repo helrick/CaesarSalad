@@ -4,8 +4,6 @@ and decides what debate topic to use?
 
 '''
 
-import random
-
 TOPICS = ['science', 'law', 'philosophy', 'culture']
 DEBATES = {'science': ["should we colonize mars?", "should we use nuclear energy?", "are humans the main cause of global warming?"],'law': ["should cannabis be legal?", "should capital punishment be legal?", "should animal testing be legal?"], 'philosophy': ["does god exist?", "do humans have free will?", "does everything happen for a reason?"], 'culture': ["should we go vegan?", "is capitalism sustainable?", "was nine eleven an inside job?"]}
 
@@ -34,11 +32,11 @@ def getCategories():
     return categorySelection
 
 def startDebate(question):
-    print("\n" + question + "\n")
+    print("\n" + question)
     userStance = ''
     while userStance not in ["yes", "y", "no", "n"]:
+        print('pick a side, and we can begin.')
         userStance = raw_input()
-
 
 
 '''
@@ -61,4 +59,3 @@ def selectDebate(topicSelection):
 #then we randomly choose from the available topics in that category
 #ask the question to the user, get a 'yes' or a 'no'
 
-main()
