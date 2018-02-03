@@ -25,6 +25,14 @@ def queryTableByKeyword(conn, keyword, table):
 		results.append(row)
 	return results
 
+def getAnyString(conn, table):
+	query = "SELECT argument FROM " + table + " ORDER BY RANDOM() LIMIT 1;"
+	cur = conn.cursor()
+	cur.execute(query)
+	row = cur.fetchone()[0]
+	row = row.encode('utf-8')
+	return row
+
 def create_connection(db_file):
     try:
         conn = sqlite3.connect(db_file)
@@ -34,8 +42,7 @@ def create_connection(db_file):
  
     return None
 
-def main():
+def mainTest():
 	conn = create_connection("ShouldWeGoVegan.db")
-	queryTableByKeywords(conn, "delicious", "products", "Against")
-
-main()
+	getAnyString(conn, "Against")
+mainTest()
