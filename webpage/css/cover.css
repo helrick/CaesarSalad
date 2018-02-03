@@ -1,14 +1,86 @@
 .navbar {
 	margin-bottom:0px;
-	background-color: #3AD87C;
+	background-color: #00AF6C;
+	border: none;
 }
 
 .center {
 	text-align:center;
 }
 
-.about-link {
-	color: black;
-
+#logo{
+	color: white;
 }
 
+#about-link{
+	padding-right: 50px;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus{
+	color: white;
+	background-color: #00AF6C;
+}
+
+.jumbotron {
+	background-color: rgba(3,123,88,0.1);
+}
+.btn, .btn:after, .btn:focus{
+	background-color: #00AF6C;
+	border-color: #00AF6C;
+}
+
+.btn:hover{
+	background-color: #149964;
+	border-color: #149964;
+}
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.42;
+  border-radius: 15px;
+}
+
+.mic .white-mic{
+	height: 10%;
+	width: 10%;
+	display: block;
+    	margin-left: auto;
+    	margin-right: auto;
+}
+
+
+.mic .green-mic{
+	display: none;
+	
+}
+
+.mic:hover .green-mic{
+	display: inline;
+	height: 10%;
+	width: 10%;
+	display: block;
+    	margin-left: auto;
+    	margin-right: auto;
+	
+}
+
+.mic:hover .white-mic{
+	display: none;
+}
+body {
+	background-image:url("../img/shattered-island.gif");
+}
+
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
