@@ -24,7 +24,9 @@
 }
 
 .jumbotron {
-	background-color: rgba(3,123,88,0.1);
+	
+	background-color: rgba(3,123,88,0.2);
+	background-color: rgba(255,255,255,0.1);
 }
 .btn, .btn:after, .btn:focus{
 	background-color: #00AF6C;
@@ -89,10 +91,19 @@
 }
 
 .topics {
-	color: #00AF6C;
-	font-size = 24px;
+	color: ##007a4b;
 	padding: 5px;
+	background-color: rgba(20, 153, 100,0.1);
+	width: 50%;
+  	margin: 0 auto;
+}
 
+#userInputArea { 
+	font-size: 20px; 
+}
+
+h4 {
+	font-size: 24px;
 }
 
 body {
