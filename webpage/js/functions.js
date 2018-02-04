@@ -12,7 +12,8 @@ catch(e) {
 var textArea = $('#userInputArea');
 var instructions = $('#instructions');
 var userResponse = '';
-
+var firstResponse = true;
+var secondResponse = false;
 
 
 recognition.continuous = true;
@@ -24,6 +25,16 @@ recognition.onresult = function(event) {
 
 	userResponse += transcript;
 	textArea.val(userResponse);
+	if(firstResponse){
+		firstResponse = false;
+		secondResponse = true;
+		getFirstInput();
+	}
+	//if(secondResponse){
+	//	secondResponse = false;
+
+	//}
+
 }
 
 //event handlers
@@ -44,7 +55,10 @@ recognition.onerror = function(event) {
 
 //if they press record, start recording
 $('#start-record-btn').on('click', function(e) {
+	if (userResponse.length){
+		userResponse += ' ';
 
+	}
 	recognition.start();
 });
 
@@ -56,6 +70,73 @@ document.body.onkeyup = function(e){
 	
     }
 }
+
+//Computer speech
+
+function talk(message) {
+	var speech = new SpeechSynthesisUtterance();
+
+	speech.text = message;
+	speech.volume = 1;
+	speech.rate = 1.1;
+	speech.pitch = 1;
+	window.speechSynthesis.speak(speech);
+}
+
+
+function sayHello() {
+	var welcome = 'hello, welcome to debate a bot. select a topic to begin:';
+	talk(welcome);
+	instructions.text('Click the button and say a topic from the list');
+}
+
+function getFirstInput(){
+	var topic = textArea.val();
+	var selection = 'you selected';
+	selection += topic;
+	selection += '. Do you think';
+	selection += topic;
+	selection += '?';
+	talk(selection);
+
+	textArea.change(function(){
+		var choice = (textArea.val()).substring(topic.length);
+		textArea.val(choice);
+		talk('You selected ' + choice);
+
+	});
+	/*
+	textArea.change()){
+		alert(topic.length + ' ' + textArea.val());
+		var choice = (textArea.val()).substring(topic.length);
+		textArea.val(choice);
+		talk('You selected ' + choice);
+	}
+	*/
+
+}
+
+function getPosition(){
+
+}
+
+/*
+$('#userInputArea').change(function(){
+	alert("here");
+	if(firstResponse){
+		firstResponse = false;
+		var selection = 'you selected';
+		selection += textArea;
+		selection += '. Do you think';
+		selection += textArea;
+		selection += '?';
+		talk(selection);
+	}
+
+
+  });
+
+ */
 
 
 /*-----------------------------

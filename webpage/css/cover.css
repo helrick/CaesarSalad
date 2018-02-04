@@ -80,11 +80,18 @@
     margin-top: 35px;
 }
 
-#instructions {
+#instructions, .topics {
 	text-align:center;
 	color: white;
 	font-size: 20px;
 	font-style: bold;
+
+}
+
+.topics {
+	color: #00AF6C;
+	font-size = 24px;
+	padding: 5px;
 
 }
 
