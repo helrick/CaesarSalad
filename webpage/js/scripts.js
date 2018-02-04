@@ -15,6 +15,7 @@ var userResponse = '';
 var questionNum = 0;
 var topic = '';
 var choice = '';
+var quit = false;
 
 recognition.continuous = true;
 
@@ -24,6 +25,9 @@ recognition.onresult = function(event) {
 	var transcript = event.results[current][0].transcript;
 	userResponse = transcript;
 	textArea.val(userResponse);
+	if(userResponse.toLowerCase() == 'quit'){
+		quitDebate();
+	}
 	if(questionNum == 0){
 		firstResponse();
 	}
@@ -134,6 +138,54 @@ function sayHello() {
 	talk(welcome);
 	instructions.text('Click the button and say a topic from the list');
 }
+
+function quitDebate() {
+	alert('you quit!');
+	quit = true;
+}
+
+function analyze(indicoData) {
+	var hq = indicoData.sentimental_hq;
+	if(hq <= 0.5){
+		$('#analysis').val('Sentiment analysis detected negativity towards this topic');
+	}
+	else{
+		$('#analysis').val('Sentiment analysis detected positivity towards this topic');
+	}	
+}
+
+// ajax to php 
+var userData = {
+    debateTopic: topic,
+    userChoice: choice,
+    userInput: userResponse
+  };
+  
+  var options = {
+    url: "main.php",
+    dataType: "text",
+    type: "POST",
+    data: { main : JSON.stringify( options ) }, // Our valid JSON string
+    success: function(result) {
+	    if(!quit){
+		var result = JSON.parse(result);
+		talk(result);
+
+	    }
+	    else{
+		    var indicoData = JSON.parse(result);
+		    analyze(indicoData);
+
+	    }
+	    },
+    error: function( xhr, status, error ) {
+        //...
+    }
+  };
+  $.ajax( options );
+
+
+
 
 
 
