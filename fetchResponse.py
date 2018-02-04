@@ -1,27 +1,41 @@
+#!/usr/bin/python
 import sys
 import random
-import indico
-import dbAccess
+import indicoio
+execfile("indico.py")
+indicoio.config.api_key = "129bf36b796984d3336a951fd28b29ad"
+execfile("dbAccess.py")
+import json
+import base64
 
 DBs = {
-    'We should go vegan':'Freewill.db',
+    'We should go vegan':'ShouldWeGoVegan.db',
     'Cannabis should be legal':'ShouldCannabisBeLegal.db',
     'Humans have free will':'ShouldWeGoVegan.db',
 }
 
-input = str(sys.argv) # [scriptName, inputStr]
-inputStr = str(input[1])
-mapKey = str(input[2])
-db = DBs[mapKey]
-view = str(input[3])
-sentiment = input[4]
+
 
 def getResponse():
+    input = sys.argv # [scriptName, inputStr]
+    print sys.argv
+    print "'\n'"
+    print sys.argv[4]
+    data=json.loads(sys.argv[4])
+    inputStr = str(input[1])
+    mapKey = str(input[2])
+    #print len(sys.argv)
+    #print input
+    
+    #print mapKey
+    db = DBs[mapKey]
+    view = str(input[3])
+    sentiment = input[4]
     keyList = keyword(inputStr)
     [key1, key2] = relevant(inputStr, keyList)
-    dbCxn = create_connection(dbName)
+    dbCxn = create_connection(db)
     result = queryTableByKeywords(dbCxn, key1, key2, view)
-    updatedImpression = analyzeImpression(inputStr, sentiment)
+    updatedImpression = analyzeImpression(inputStr, data)
     if len(result) > 0:
         ranked = rankResults(result, key1, key2)
         response = [ranked[key] for key in ranked]

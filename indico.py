@@ -1,9 +1,10 @@
+#!/usr/bin/python
 import operator
 import os
 
-import indicoio
-indicoio.config.api_key = os.environ['indicioio']
-
+import os
+os.environ['indicioio'] = '3ccad861571b4040c5312e55d9884722'
+ 
 # extract keywords from string s
 def keyword(s):
     result = indicoio.keywords(s)
@@ -27,14 +28,17 @@ def relevant(s, keys):
     return result
 
 def analyzeImpression(msg, data):
-    data['count'] += 1
-    emotions = indicoio.emotion(msg)
-    personality = indicoio.personality(msg)
-    sentimentVal = indicoio.sentiment_hq(msg)
-    for e in emotions:
-        data['emotion'][e] += emotions[e]
-    for p in personality:
-        data['personality'][p] += personality[p]
-    data['sentiment'] += sentimentVal
-    return data
+	#print "Hello!/n" + data['count']
+	print type(data)
+	data['count'] += 1
+
+	emotions = indicoio.emotion(msg)
+	personality = indicoio.personality(msg)
+	sentimentVal = indicoio.sentiment_hq(msg)
+	for e in emotions:
+		data['emotion'][e] += emotions[e]
+	for p in personality:
+		data['personality'][p] += personality[p]
+	data['sentiment'] += sentimentVal
+	return data
 
