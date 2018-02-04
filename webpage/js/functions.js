@@ -10,11 +10,11 @@ catch(e) {
 }
 
 var textArea = $('#userInputArea');
-
+var instructions = $('#instructions');
 var userResponse = '';
 
 
-/*
+
 recognition.continuous = true;
 
 //capture sentence
@@ -23,29 +23,44 @@ recognition.onresult = function(event) {
 	var transcript = event.results[current][0].transcript;
 
 	userResponse += transcript;
-	userInputArea.val(userResponse);
+	textArea.val(userResponse);
 }
 
 //event handlers
 recognition.onstart = function() {
-	alert('here');
-	instructions.text('Listening...');
+	instructions.text('Listening... (Press Spacebar to Stop)');
 }
 
 recognition.onspeechend = function() {
 	instructions.text('Ok!');
 }
 
+recognition.on
 recognition.onerror = function(event) {
 	if(event.error == 'no-speech'){
 		instructions.text("Sorry, I couldn't quite hear that");
 	};
 }
-*/
+
+//if they press record, start recording
+$('#start-record-btn').on('click', function(e) {
+
+	recognition.start();
+});
+
+//if they press space, stop recording
+document.body.onkeyup = function(e){
+    if(e.keyCode == 32){
+        recognition.stop();
+	instructions.text('Recording paused.')
+	
+    }
+}
+
 
 /*-----------------------------
       Voice Recognition 
-------------------------------*/
+------------------------------
 
 // If false, the recording will stop after a few seconds of silence.
 // When true, the silence period is longer (about 15 seconds),
@@ -88,12 +103,8 @@ recognition.onerror = function(event) {
 		instructions.text('No speech was detected. Try again.');  
 	};
 }
+*/
 
-
-$('#start-record-btn').on('click', function(e) {
-
-	recognition.start();
-});
 
 
 

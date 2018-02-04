@@ -80,6 +80,14 @@
     margin-top: 35px;
 }
 
+#instructions {
+	text-align:center;
+	color: white;
+	font-size: 20px;
+	font-style: bold;
+
+}
+
 body {
 	background-image:url("../img/shattered-island.gif");
 }
