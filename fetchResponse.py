@@ -3,10 +3,17 @@ import random
 import indico
 import dbAccess
 
+DBs = {
+    'We should go vegan':'Freewill.db',
+    'Cannabis should be legal':'ShouldCannabisBeLegal.db',
+    'Humans have free will':'ShouldWeGoVegan.db',
+}
+
 input = str(sys.argv) # [scriptName, inputStr]
 inputStr = str(input[1])
-view = str(input[2])
-dbName = str(input[3]) + ".db"
+mapKey = str(input[2])
+db = DBs[mapKey]
+view = str(input[3])
 sentiment = input[4]
 
 def getResponse():
