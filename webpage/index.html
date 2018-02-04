@@ -5,12 +5,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Debate Bot</title>
+<title>DebateABot</title>
 <link rel="stylesheet" href="css/cover.css">
 <link rel="icon" href="img/gavel.png">
-<script src="js/functions.js"></script>
 
 </head>
 <body>
@@ -28,37 +25,46 @@
 
 	<div class="jumbotron">
 		<div class="container">
-			<h1 style="color:white">Debatebot</h1>
+			<h1 style="color:white">DebateABot</h1>
 			<p style="color:white">Practice, learn, and perfect your debating skills with our conversational interface. Plus, see where your views fall on the political spectrum and gain insight into what topics matter most to you.</p>
 			<br>
-			<!--div class="center">
-				<p><a class="btn btn-primary btn-lg" href="#">Debate</a></p>
-			</div--!>
 		</div>
 	</div>
+	
 
 	<br>
 	<br>
 	<br>
 	<br>
+
+
+	<h3 class="no-browser-support">For now DebateABot only works in Google Chrome and Firefox, try opening this site in one of those browsers.</h3>
+
 
 	<div class="form-group row">
 		<div class="col-md-6 col-md-offset-3">
-			<input type="text" class="form-control">
+		<textarea id="userInputArea" class="form-control"></textarea>
 
 		</div>
 	</div>
 	<div class="form-group row">
 		<div class="mic">
-			<img href="#" src="img/microphone-2.png" class="white-mic"/>
-			<img href="#" src="img/microphone-2-green.png" onClick="getStream('audio')" class="green-mic"/>
+			<!--img href="#" src="img/microphone-2.png" class="white-mic"/>
+			<img href="#" src="img/microphone-2-green.png" id="start-record-button" class="green-mic"/-->
+			<button id="start-record-btn" title="Start Recording">Start Recognition</button>
+
 		</div>
 		
 
 	</div>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/functions.js"></script>
 
 
+
+	
 
 
 

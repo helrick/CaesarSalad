@@ -72,6 +72,14 @@
 .mic:hover .white-mic{
 	display: none;
 }
+
+.no-browser-support {
+    display: none;
+    font-size: 1.2rem;
+    color: #e64427;
+    margin-top: 35px;
+}
+
 body {
 	background-image:url("../img/shattered-island.gif");
 }
