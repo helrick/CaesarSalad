@@ -10,7 +10,7 @@ def queryTableByKeywords(conn, keyword1, keyword2, table):
 	results = []
 	for row in rows:
 		row = row[0].encode('utf-8')
-		print row
+		#print row
 		results.append(row)
 	return results
 
